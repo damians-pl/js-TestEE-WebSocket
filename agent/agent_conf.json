@@ -8,7 +8,7 @@
         },
         {
             "nameTest": "Sprawdzam usluge",
-            "expectationResult": 200
+            "expectationResult": true
         }
     ]
 }

@@ -1,6 +1,6 @@
 {
-    "nodeId":  "Name Instance",
-    "email": "email@gmail.com",
+    "nodeId":  "machine-real-test",
+    "email": "damians106@gmail.com",
     "testing": [
         {
             "nameTest": "Test dostepności WWW",
@@ -8,7 +8,7 @@
         },
         {
             "nameTest": "Sprawdzam usluge",
-            "expectationResult": 200
+            "expectationResult": true
         }
     ]
 }

@@ -78,5 +78,8 @@ typings/
 package-lock.json
 */package-lock.json
 *.code-workspace
+
 docker*
-*/logs/*
+server/logs/*
+agent/agent_conf.json
+agent/agent_test.js

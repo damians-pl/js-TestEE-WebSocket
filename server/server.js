@@ -135,7 +135,7 @@ function intervalTest(socket, node_id){
                     testEE[node_id].email, 
                     'Alert #'+node_id, 
                     'Service test #'+c+': ' + node_id + ' -> ' + n.nameTest + ' -> Response: ' + res
-                    );
+                );
 
                 socket.emit('testResetService', n.nameTest, c, (resReset) => {
                     if(resReset === true){
