@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node ./server/server.js",
-    "agent": "node ./agent/agent.js",
-    "agent-test": "node ./agent/agent.js agent_conf.fail.json"
+    "server": "node server/server.js",
+    "agent": "node agent/agent.js",
+    "agent-test": "node agent/agent.js agent_conf.fail.json"
   },
   "author": "",
   "license": "ISC",

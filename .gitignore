@@ -79,4 +79,4 @@ package-lock.json
 */package-lock.json
 *.code-workspace
 docker*
-*/logs/
+*/logs/*

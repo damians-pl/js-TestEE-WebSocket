@@ -1,4 +1,4 @@
-var socket = require('socket.io-client')('http://localhost:8877');
+var socket = require('socket.io-client')('http://testee.aws.sulmowski.eu:8877');
 const _ = require('underscore');
 
 var configFile = process.argv[2] || "agent_conf.json";

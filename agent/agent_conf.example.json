@@ -1,0 +1,14 @@
+{
+    "nodeId":  "Name Instance",
+    "email": "email@gmail.com",
+    "testing": [
+        {
+            "nameTest": "Test dostepności WWW",
+            "expectationResult": 200
+        },
+        {
+            "nameTest": "Sprawdzam usluge",
+            "expectationResult": 200
+        }
+    ]
+}
