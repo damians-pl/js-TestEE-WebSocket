@@ -1,0 +1,10 @@
+{
+    "nodeId":  "machine2",
+    "email": "damian@s",
+    "testing": [
+        {
+            "nameTest": "Test dostepności WWW 2",
+            "expectationResult": 200
+        }
+    ]
+}

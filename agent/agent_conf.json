@@ -1,0 +1,14 @@
+{
+    "nodeId":  "machine1",
+    "email": "damians106@gmail.com",
+    "testing": [
+        {
+            "nameTest": "Test dostepności WWW",
+            "expectationResult": 200
+        },
+        {
+            "nameTest": "Sprawdzam usluge",
+            "expectationResult": 200
+        }
+    ]
+}
