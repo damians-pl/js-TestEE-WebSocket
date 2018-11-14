@@ -17,9 +17,10 @@ const testFunctions = {
                 // console.log( error );
                 return "Fatal error";
             }
-            
+        
         },
         "reset": () => {
+            
             // Remember about add this line in:
             // sudo nano /etc/sudoers.d/testee
             // pi ALL=/sbin/shutdown
@@ -27,8 +28,8 @@ const testFunctions = {
             // pi ALL=/sbin/service
             // pi ALL=NOPASSWD: /sbin/service
 
-            console.log("Resetuje usługe 1");
-            exec( 'sudo /sbin/service httpd restart' );
+            let status = exec( 'sudo /sbin/service httpd restart' ).toString();
+            console.log("Resetuje usługe httpd:"+status);
             // process.exit();
             return true;
         }
@@ -44,8 +45,8 @@ const testFunctions = {
         },
 
         "reset": () => {
-            console.log("Resetuje maszyne");
-            exec( 'sudo /sbin/shutdown -h now' );
+            let status = exec( 'sudo /sbin/shutdown -h now' ).toString();
+            console.log("Resetuje maszyne: " + status);
             return true;
         }
     }

@@ -85,7 +85,7 @@ io.on('connection', (socket) => {
             console.log('Start interval test: ' + testEE[res.nodeId].nodeId);
             log.socket('Start interval test: ' + testEE[res.nodeId].nodeId);
             testEE[res.nodeId].intervalStatus = 1;
-            intervalTestEE[res.nodeId] = setInterval( () => { intervalTest(socket, res.nodeId); }, 30*1000);
+            intervalTestEE[res.nodeId] = setInterval( () => { intervalTest(socket, res.nodeId); }, 5*1000);
         }
 
     });
