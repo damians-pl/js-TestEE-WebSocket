@@ -73,16 +73,19 @@ io.on('connection', (socket) => {
 
 
         console.log('Connected Node: ' + testEE[res.nodeId].nodeId);
+        log.socket('Connected Node: ' + testEE[res.nodeId].nodeId);
         socket.emit('initRes', 1);
 
         if( _.isEmpty(testEE[res.nodeId].testing) === true ){
             console.log('Nothing to do in test: ' + testEE[res.nodeId].nodeId);
+            log.socket('Nothing to do in test: ' + testEE[res.nodeId].nodeId);
             testEE[res.nodeId].intervalStatus = 0;
             socket.disconnect(true);
         }else{
             console.log('Start interval test: ' + testEE[res.nodeId].nodeId);
+            log.socket('Start interval test: ' + testEE[res.nodeId].nodeId);
             testEE[res.nodeId].intervalStatus = 1;
-            intervalTestEE[res.nodeId] = setInterval( () => { intervalTest(socket, res.nodeId); }, 1*1000);
+            intervalTestEE[res.nodeId] = setInterval( () => { intervalTest(socket, res.nodeId); }, 30*1000);
         }
 
     });
@@ -98,6 +101,7 @@ io.on('connection', (socket) => {
             // delete intervalTestEE[nodeId];
         }
         console.log('Disconnected Node: ' + nodeId);
+        log.socket('Disconnected Node: ' + nodeId);
     });
 
 });
@@ -118,17 +122,21 @@ function intervalTest(socket, node_id){
     _(testEE[node_id].testing).each( (n) => {
         socket.emit('testQuery', n.nameTest, i, (res, c) => {
             console.log('Service test #'+c+': ' + node_id + ' -> ' + n.nameTest + ' -> Response: ' + res);
+            log.socket('Service test #'+c+': ' + node_id + ' -> ' + n.nameTest + ' -> Response: ' + res);
             testEE[node_id].testing[c].currentResult = res;
             testEE[node_id].date = new Date();
             
             if(res === n.expectationResult){
                 console.log("PASS");
+                log.socket("PASS");
                 testEE[node_id].testing[c].status = 1;
             }else if(res === -1){
                 testEE[node_id].testing[c].status = 0;
                 console.log("NEUTRAL - TEST NULL");
+                log.socket("NEUTRAL - TEST NULL");
             }else{
                 console.log("FAIL: " + res);
+                log.socket("FAIL: " + res);
                 testEE[node_id].testing[c].status = 2;
 
                 sendEmail(
@@ -144,8 +152,10 @@ function intervalTest(socket, node_id){
                         intervalTestEE[node_id] = false;
 
                         console.log("WAITING FOR RESTART APP...");
+                        log.socket("WAITING FOR RESTART APP...");
                     }else{
                         console.log("ERROR RESTART SERVICE: "+resReset);
+                        log.socket("ERROR RESTART SERVICE: "+resReset);
                     }
                 });
             }
@@ -187,6 +197,7 @@ function sendEmail(to, subject, text){
         console.log(error);
     } else {
         console.log('Email sent: ' + info.response);
+        log.socket('Email sent: ' + info.response);
     }
     });
 }
@@ -200,11 +211,13 @@ app.get('/', function(req, res){
 
 web.on('connection', function(socket){
     console.log("Connect web viewer");
+    log.socket("Connect web viewer");
     intervalWeb = setInterval( () => { intervalWebTestEE(socket); }, 1*1000);
 
     socket.on('disconnect', function(){
         clearInterval(intervalWeb);
         console.log('Disconnected web viewer');
+        log.socket('Disconnected web viewer');
     });
 });
 

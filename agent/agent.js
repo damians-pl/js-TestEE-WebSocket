@@ -1,5 +1,6 @@
 var socket = require('socket.io-client')('http://testee.aws.sulmowski.eu:8877');
 const _ = require('underscore');
+const forever = require('forever-monitor');
 
 var configFile = process.argv[2] || "agent_conf.json";
 var config = require("./"+configFile);
@@ -38,6 +39,10 @@ socket.on('testResetService', (res, i, fn) => {
     let returnReset = testFunctions["test_"+i]["reset"]();
 
     fn(returnReset);
+
+    var child = new (forever.Monitor)('agent.js', {max: 3,silent: true});
+    child.restart();
+
     //if(returnReset == true) process.exit(0);
 });
 

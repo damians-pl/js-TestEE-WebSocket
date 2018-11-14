@@ -11,7 +11,7 @@ var App = new function () {
                 return;
             }
             
-            console.log(res);
+            //console.log(res);
             let testEE = res;
             let htmlOut = "";
 
