@@ -1,0 +1,14 @@
+{
+    "nodeId":  "machine-real-test",
+    "email": "damians106@gmail.com",
+    "testing": [
+        {
+            "nameTest": "Test dostepności WWW",
+            "expectationResult": 200
+        },
+        {
+            "nameTest": "Sprawdzam usluge",
+            "expectationResult": true
+        }
+    ]
+}
