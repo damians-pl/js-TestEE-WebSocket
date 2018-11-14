@@ -79,3 +79,5 @@ package-lock.json
 */package-lock.json
 *.code-workspace
 docker*
+agent/agent_test.js
+agent/agent_conf.json
